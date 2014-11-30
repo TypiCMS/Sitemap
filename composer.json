@@ -8,8 +8,8 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
+        "typicms/core": "dev-master",
+        "roumen/sitemap": "~2.4.6"
     },
     "autoload": {
         "psr-4": {
