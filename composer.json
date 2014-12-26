@@ -8,7 +8,6 @@
         }
     ],
     "require": {
-        "typicms/core": "dev-master",
         "roumen/sitemap": "~2.4.6"
     },
     "autoload": {
