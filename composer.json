@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "TypiCMS\\Modules\\Sitemap\\": ""
+            "TypiCMS\\Modules\\Sitemap\\": "src/"
         }
     },
     "minimum-stability": "stable"
