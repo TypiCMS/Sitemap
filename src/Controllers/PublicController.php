@@ -5,7 +5,7 @@ use App;
 use URL;
 use Route;
 use Config;
-use Controller;
+use App\Http\Controllers\Controller;
 
 class PublicController extends Controller
 {
@@ -35,7 +35,7 @@ class PublicController extends Controller
         // check if there is cached sitemap and build new only if is not
         if (! $sitemap->isCached()) {
 
-            foreach (Config::get('app.locales') as $locale) {
+            foreach (Config::get('translatable.locales') as $locale) {
 
                 App::setLocale($locale);
 
