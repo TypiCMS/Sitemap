@@ -6,13 +6,14 @@ use Illuminate\Support\ServiceProvider;
 class ModuleProvider extends ServiceProvider
 {
 
-    public function boot()
-    {
-        // Bring in the routes
-        require __DIR__ . '/../routes.php';
-    }
-
     public function register()
     {
+
+        $app = $this->app;
+
+        /**
+         * Register route service provider
+         */
+        $app->register('TypiCMS\Modules\Sitemap\Providers\RouteServiceProvider');
     }
 }

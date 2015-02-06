@@ -2,10 +2,10 @@
 namespace TypiCMS\Modules\Sitemap\Controllers;
 
 use App;
-use URL;
-use Route;
-use Config;
 use App\Http\Controllers\Controller;
+use Config;
+use Route;
+use URL;
 
 class PublicController extends Controller
 {
@@ -24,7 +24,7 @@ class PublicController extends Controller
     public function generate()
     {
         // create new sitemap object
-        $sitemap = App::make('sitemap');
+        $sitemap = app('sitemap');
 
         // set cache (key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean))
         // by default cache is disabled
