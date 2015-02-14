@@ -1,5 +1,5 @@
 <?php
-namespace TypiCMS\Modules\Sitemap\Controllers;
+namespace TypiCMS\Modules\Sitemap\Http\Controllers;
 
 use App;
 use App\Http\Controllers\Controller;
