@@ -45,7 +45,7 @@ class PublicController extends Controller
                         continue;
                     }
 
-                    $items = $module::getAll();
+                    $items = $module::all();
 
                     foreach ($items as $item) {
                         if ($module == 'Pages') {
