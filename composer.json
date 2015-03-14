@@ -16,5 +16,6 @@
             "TypiCMS\\Modules\\Sitemap\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
