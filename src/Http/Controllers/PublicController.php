@@ -49,7 +49,7 @@ class PublicController extends Controller
 
                     foreach ($items as $item) {
                         if ($module == 'Pages') {
-                            $url = URL::to($item->uri);
+                            $url = url($item->uri);
                         } else {
                             if (Route::has($locale . '.' . $item->getTable() . '.categories.slug')) {
                                 // Module with category
