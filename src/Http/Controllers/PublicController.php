@@ -3,9 +3,7 @@ namespace TypiCMS\Modules\Sitemap\Http\Controllers;
 
 use App;
 use App\Http\Controllers\Controller;
-use Config;
 use Route;
-use URL;
 
 class PublicController extends Controller
 {
@@ -13,7 +11,7 @@ class PublicController extends Controller
 
     public function __construct()
     {
-        $this->modules = Config::get('sitemap.modules');
+        $this->modules = config('sitemap.modules');
     }
 
     /**
@@ -28,14 +26,14 @@ class PublicController extends Controller
 
         // set cache (key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean))
         // by default cache is disabled
-        if (Config::get('app.cache')) {
+        if (config('typicms.cache')) {
             $sitemap->setCache('laravel.sitemap', 3600);
         }
 
         // check if there is cached sitemap and build new only if is not
         if (! $sitemap->isCached()) {
 
-            foreach (Config::get('translatable.locales') as $locale) {
+            foreach (config('translatable.locales') as $locale) {
 
                 App::setLocale($locale);
 
