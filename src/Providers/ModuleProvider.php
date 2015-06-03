@@ -9,11 +9,14 @@ class ModuleProvider extends ServiceProvider
     public function register()
     {
 
-        $app = $this->app;
+        /**
+         * Register sitemap package
+         */
+        $this->app->register('Roumen\Sitemap\SitemapServiceProvider');
 
         /**
          * Register route service provider
          */
-        $app->register('TypiCMS\Modules\Sitemap\Providers\RouteServiceProvider');
+        $this->app->register('TypiCMS\Modules\Sitemap\Providers\RouteServiceProvider');
     }
 }
