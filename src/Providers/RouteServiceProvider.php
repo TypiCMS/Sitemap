@@ -1,9 +1,8 @@
 <?php
 namespace TypiCMS\Modules\Sitemap\Providers;
 
-use Config;
-use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Router;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -25,7 +24,6 @@ class RouteServiceProvider extends ServiceProvider {
     public function boot(Router $router)
     {
         parent::boot($router);
-
     }
 
     /**
@@ -40,7 +38,7 @@ class RouteServiceProvider extends ServiceProvider {
             /**
              * Front office routes
              */
-            $router->get('sitemap.xml', ['as' => 'sitemap', 'PublicController@generate']);
+            $router->get('sitemap.xml', ['as' => 'sitemap', 'uses' => 'PublicController@generate']);
         });
     }
 

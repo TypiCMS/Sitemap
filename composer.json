@@ -9,8 +9,8 @@
         }
     ],
     "require": {
-        "typicms/core": "~2.2.0",
-        "roumen/sitemap": "~2.4.6"
+        "roumen/sitemap": "~2.5.4",
+        "typicms/core": "~2.3.0"
     },
     "autoload": {
         "psr-4": {

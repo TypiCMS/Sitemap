@@ -2,7 +2,7 @@
 namespace TypiCMS\Modules\Sitemap\Http\Controllers;
 
 use App;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Route;
 
 class PublicController extends Controller
