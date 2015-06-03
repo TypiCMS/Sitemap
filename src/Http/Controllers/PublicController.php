@@ -1,18 +1,12 @@
 <?php
 namespace TypiCMS\Modules\Sitemap\Http\Controllers;
 
-use App;
-use App\Http\Controllers\Controller;
-use Route;
+use Illuminate\Routing\Controller;
+use TypiCMS\Modules\Core\Facades\TypiCMS;
+use TypiCMS\Modules\Pages\Facades\Facade as Pages;
 
 class PublicController extends Controller
 {
-    private $modules = array();
-
-    public function __construct()
-    {
-        $this->modules = config('sitemap.modules');
-    }
 
     /**
      * Display a listing of the resource.
@@ -33,33 +27,27 @@ class PublicController extends Controller
         // check if there is cached sitemap and build new only if is not
         if (! $sitemap->isCached()) {
 
-            foreach (config('translatable.locales') as $locale) {
+            foreach (TypiCMS::getPublicLocales() as $locale) {
 
-                App::setLocale($locale);
+                app()->setLocale($locale);
 
-                foreach ($this->modules as $module) {
+                $pages = Pages::allBy('private', 0);
+
+                foreach ($pages as $page) {
+
+                    $url = url($page->uri($locale));
+                    $sitemap->add($url, $page->updated_at);
+
+                    if (! $module = ucfirst($page->module)) {
+                        continue;
+                    }
 
                     if (! class_exists($module)) {
                         continue;
                     }
 
-                    $items = $module::all();
-
-                    foreach ($items as $item) {
-                        if ($module == 'Pages') {
-                            $url = url($item->uri);
-                        } else {
-                            if (Route::has($locale . '.' . $item->getTable() . '.categories.slug')) {
-                                // Module with category
-                                $url = route(
-                                    $locale . '.' . $item->getTable() . '.categories.slug',
-                                    [$item->category->slug, $item->slug]
-                                );
-                            } else {
-                                 // Module without category
-                                $url = route($locale . '.' . $item->getTable() . '.slug', $item->slug);
-                            }
-                        }
+                    foreach ($module::all() as $item) {
+                        $url = url($item->uri($locale));
                         $sitemap->add($url, $item->updated_at);
                     }
 
@@ -73,4 +61,5 @@ class PublicController extends Controller
         return $sitemap->render('xml');
 
     }
+
 }
