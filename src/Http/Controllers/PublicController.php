@@ -11,7 +11,7 @@ class PublicController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Support\Facades\Response
      */
     public function generate()
     {
