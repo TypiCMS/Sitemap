@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "roumen/sitemap": "~2.6.0",
+        "roumen/sitemap": "~2.5.8",
         "typicms/core": "~2.6.0"
     },
     "autoload": {
