@@ -29,7 +29,7 @@ class RouteServiceProvider extends ServiceProvider
             /*
              * Front office routes
              */
-            $router->get('sitemap.xml', ['as' => 'sitemap', 'uses' => 'PublicController@generate']);
+            $router->get('sitemap.xml', 'PublicController@generate')->name('sitemap');
         });
     }
 }
