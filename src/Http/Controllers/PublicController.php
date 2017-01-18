@@ -26,7 +26,7 @@ class PublicController extends Controller
 
         // check if there is cached sitemap and build new only if is not
         if (!$sitemap->isCached()) {
-            foreach (TypiCMS::getOnlineLocales() as $locale) {
+            foreach (TypiCMS::enabledLocales() as $locale) {
                 app()->setLocale($locale);
 
                 $pages = Pages::allBy('private', 0);
