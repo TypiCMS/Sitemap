@@ -4,7 +4,7 @@ namespace TypiCMS\Modules\Sitemap\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
-use TypiCMS\Modules\Pages\Facades\Facade as Pages;
+use TypiCMS\Modules\Pages\Facades\Pages;
 
 class PublicController extends Controller
 {
