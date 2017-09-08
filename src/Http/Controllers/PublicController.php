@@ -25,28 +25,29 @@ class PublicController extends Controller
         }
 
         // check if there is cached sitemap and build new only if is not
-        if (!$sitemap->isCached()) {
-            foreach (TypiCMS::enabledLocales() as $locale) {
-                app()->setLocale($locale);
+        if ($sitemap->isCached()) {
+            return $sitemap->render('xml');
+        }
+        foreach (TypiCMS::enabledLocales() as $locale) {
+            app()->setLocale($locale);
 
-                $pages = Pages::allBy('private', 0);
+            $pages = Pages::allBy('private', 0);
 
-                foreach ($pages as $page) {
-                    $url = url($page->uri($locale));
-                    $sitemap->add($url, $page->updated_at);
+            foreach ($pages as $page) {
+                $url = url($page->uri($locale));
+                $sitemap->add($url, $page->updated_at);
 
-                    if (!$module = ucfirst($page->module)) {
-                        continue;
-                    }
+                if (!$module = ucfirst($page->module)) {
+                    continue;
+                }
 
-                    if (!class_exists($module)) {
-                        continue;
-                    }
+                if (!class_exists($module)) {
+                    continue;
+                }
 
-                    foreach ($module::all() as $item) {
-                        $url = url($item->uri($locale));
-                        $sitemap->add($url, $item->updated_at);
-                    }
+                foreach ($module::all() as $item) {
+                    $url = url($item->uri($locale));
+                    $sitemap->add($url, $item->updated_at);
                 }
             }
         }
