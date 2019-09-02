@@ -3,17 +3,13 @@
 namespace TypiCMS\Modules\Sitemap\Http\Controllers;
 
 use Illuminate\Routing\Controller;
+use Illuminate\View\View;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 use TypiCMS\Modules\Pages\Facades\Pages;
 
 class PublicController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Support\Facades\Response
-     */
-    public function generate()
+    public function generate(): View
     {
         // create new sitemap object
         $sitemap = app('sitemap');
