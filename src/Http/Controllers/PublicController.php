@@ -5,7 +5,6 @@ namespace TypiCMS\Modules\Sitemap\Http\Controllers;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
-use TypiCMS\Modules\Pages\Facades\Pages;
 use TypiCMS\Modules\Pages\Models\Page;
 
 class PublicController extends Controller
