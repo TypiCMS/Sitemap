@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\View\View;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 use TypiCMS\Modules\Pages\Facades\Pages;
+use TypiCMS\Modules\Pages\Models\Page;
 
 class PublicController extends Controller
 {
@@ -25,7 +26,7 @@ class PublicController extends Controller
             foreach (TypiCMS::enabledLocales() as $locale) {
                 app()->setLocale($locale);
 
-                $pages = Pages::allBy('private', 0);
+                $pages = Page::published()->where('private', 0)->get();
 
                 foreach ($pages as $page) {
                     $url = url($page->uri($locale));
@@ -39,7 +40,7 @@ class PublicController extends Controller
                         continue;
                     }
 
-                    foreach ($module::all() as $item) {
+                    foreach ($module::published()->get() as $item) {
                         $url = url($item->uri($locale));
                         $sitemap->add($url, $item->updated_at);
                     }
