@@ -2,15 +2,15 @@
 
 namespace TypiCMS\Modules\Sitemap\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Illuminate\View\View;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 use TypiCMS\Modules\Pages\Facades\Pages;
 use TypiCMS\Modules\Pages\Models\Page;
 
 class PublicController extends Controller
 {
-    public function generate(): View
+    public function generate(): Response
     {
         // create new sitemap object
         $sitemap = app('sitemap');
