@@ -4,6 +4,8 @@ namespace TypiCMS\Modules\Sitemap\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use TypiCMS\Modules\Core\Facades\TypiCMS;
 use TypiCMS\Modules\Pages\Models\Page;
 
@@ -36,6 +38,10 @@ class PublicController extends Controller
                     }
 
                     if (!class_exists($module)) {
+                        continue;
+                    }
+
+                    if (!Route::has($locale.'::'.Str::singular(mb_strtolower($module)))) {
                         continue;
                     }
 
