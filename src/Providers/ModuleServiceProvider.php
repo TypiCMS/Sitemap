@@ -6,11 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        /*
-         * Register route service provider
-         */
         $this->app->register(RouteServiceProvider::class);
     }
 }

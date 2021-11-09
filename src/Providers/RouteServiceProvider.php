@@ -8,7 +8,7 @@ use TypiCMS\Modules\Sitemap\Http\Controllers\PublicController;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    public function map()
+    public function map(): void
     {
         /*
          * Front office routes
